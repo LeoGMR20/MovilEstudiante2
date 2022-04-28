@@ -50,22 +50,22 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="@string/btn_registrar"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/swEstudiante" />
+        app:layout_constraintTop_toBottomOf="@+id/etCodigo" />
 
     <Switch
         android:id="@+id/swEstudiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:minHeight="48dp"
         android:text="@string/text_estudiante"
-        app:layout_constraintEnd_toEndOf="@+id/etCelular"
-        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
+        app:layout_constraintEnd_toEndOf="@+id/etEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -106,4 +106,31 @@
         app:layout_constraintStart_toStartOf="@+id/btnRegistrar"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrar"
         app:layout_constraintVertical_bias="0.2" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/etCelular"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etCelular"
+        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
+
+    <EditText
+        android:id="@+id/etCodigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/hint_codigo"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/swEstudiante" />
 </androidx.constraintlayout.widget.ConstraintLayout>

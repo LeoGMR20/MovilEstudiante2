@@ -8,18 +8,21 @@ public class Estudiante {
     private String nombre;
     private String apellido;
     private int celular;
+    private String email;
     private boolean estudiante;
+    private int codigoEstudiante;
 
     //Constructor
 
-    public Estudiante(String nombre, String apellido, int celular, boolean estudiante) {
+    public Estudiante(String nombre, String apellido, int celular, String email, boolean estudiante) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
+        this.email = email;
         this.estudiante = estudiante;
     }
 
-    //Setters
+    //Getters
 
     public String getNombre() {
         return nombre;
@@ -37,12 +40,21 @@ public class Estudiante {
         return estudiante;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public int getCodigoEstudiante() {
+        return codigoEstudiante;
+    }
+
     @Override
     public String toString() {
         return "Estudiante\n" +
                 "Nombre= " + nombre + '\n' +
                 "Apellido= " + apellido + '\n' +
                 "Celular= " + celular + '\n' +
+                "Email= " + email + '\n' +
                 "Es estudiante= " + estudiante;
     }
 }
