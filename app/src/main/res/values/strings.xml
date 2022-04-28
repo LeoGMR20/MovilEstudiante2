@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Proyecto 21 04 2022</string>
+    <string name="hint_nombre">Nombre:</string>
+    <string name="hint_apellido">Apellido:</string>
+    <string name="hint_celular">Celular:</string>
+    <string name="text_estudiante">Estudiante:</string>
+    <string name="btn_registrar">Registrar</string>
+</resources>
