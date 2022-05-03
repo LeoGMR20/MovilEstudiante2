@@ -119,7 +119,8 @@
         app:layout_constraintEnd_toEndOf="@+id/etCelular"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etCelular"
-        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
+        app:layout_constraintTop_toBottomOf="@+id/etCelular"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/etCodigo"
@@ -129,6 +130,7 @@
         android:ems="10"
         android:hint="@string/hint_codigo"
         android:inputType="number"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="@+id/guideline2"

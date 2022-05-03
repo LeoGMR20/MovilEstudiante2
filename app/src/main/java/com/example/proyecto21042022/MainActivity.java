@@ -2,6 +2,7 @@ package com.example.proyecto21042022;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     //Atributos generales
 
     private Estudiante estudiante;
+    private String nombre, apellido, celular, email, codigo;
+    private boolean esEstudiante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 obtenerInformacion();
+                pasarOtraPantalla();
             }
         });
 
@@ -42,8 +46,51 @@ public class MainActivity extends AppCompatActivity {
         swEstudiante.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                gestionarCodigoView(b);            }
+                gestionarCodigoView(b);
+            }
         });
+    }
+
+    //Manejo del componente llamado INTENT
+    private void pasarOtraPantalla() {
+        /*
+        Cuando se quiere navegar de una pantalla A a otra pantalla B
+        se debe hacer uso del componenete llamado INTENT
+        el mismo se comporta como el criterio de querer responder
+        a una intención o deseo en términos simples.
+        Si la intención se puede resolver pues logramos el objetivo
+        y un método en específico lanzará la siguiente pantalla.
+        Para configurar un INTENT en este sentido, se debe crear
+        una instancia de la clase Intent y en su constructor
+        indicarle de donde a donde quieren ir, pero deben ser referenciadas
+        en conceptos del contexto de la clase que representa a esa pantalla
+        */
+        Intent intencion = new Intent(this, HomeActivity.class);
+        //Paso 1: mandar datos
+        /*
+        Quieren pasar datos a otra pantalla
+        Usar el Intent
+        en el Intent -> configurar un archivo temporal
+        archivo temporal -> guarda registro en un formato.
+        ese formato se conoce como: CLAVE(key) -> VALOR(value)
+        ejemplo: .putExtra("Llave"(clave), valor(primitiva))
+        El archivo pueden entenderlo que se llama extras
+        y cada registro que crean es un EXTRA
+        La llave debe ser una cadena string única
+         */
+        nombre = etNombre.getText().toString();
+        apellido = etApellido.getText().toString();
+        celular = etCelular.getText().toString();
+        email = etEmail.getText().toString();
+        codigo = etCodigo.getText().toString();
+        esEstudiante = swEstudiante.isChecked();
+        intencion.putExtra("nombre_persona",nombre);
+        intencion.putExtra("apellido_persona",apellido);
+        intencion.putExtra("celular_persona",celular);
+        intencion.putExtra("email_persona",email);
+        intencion.putExtra("codigo_persona",codigo);
+        intencion.putExtra("esEstudiante_persona",esEstudiante);
+        startActivity(intencion);
     }
 
     private void gestionarCodigoView(boolean marcado){
@@ -104,8 +151,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"El número de celular ingresado es demasiado pequeño",Toast.LENGTH_LONG).show();
         }
         else{
-            String nombre = etNombre.getText().toString();
-            String apellido = etApellido.getText().toString();
+            nombre = etNombre.getText().toString();
+            apellido = etApellido.getText().toString();
             String email = etApellido.getText().toString();
             int celular = Integer.parseInt(etCelular.getText().toString());
             int codigo = Integer.parseInt(etCodigo.getText().toString());

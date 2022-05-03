@@ -6,5 +6,5 @@
     <string name="text_estudiante">¿Es estudiante?:</string>
     <string name="btn_registrar">Registrar</string>
     <string name="hint_email">Email:</string>
-    <string name="hint_codigo">Codigo:</string>
+    <string name="hint_codigo">Codigo Estudiante:</string>
 </resources>
