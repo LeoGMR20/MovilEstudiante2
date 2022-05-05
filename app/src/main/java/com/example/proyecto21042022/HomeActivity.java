@@ -11,7 +11,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private String nombre, apellido, celular, email, codigo;
     private boolean esEstudiante;
-
+    private Estudiante estudiante;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +22,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void mostrarDatos() {
-        txtResultado.setText("Nombre: "+nombre+
-                "\nApellido: "+apellido+
-                "\nCelular: "+celular+
-                "\nEmail: "+email+
-                "\nCodigo: "+codigo+
-                "\n¿Es estudiante?: "+esEstudiante);
+        txtResultado.setText("Nombre: "+estudiante.getNombre()+
+                "\nApellido: "+estudiante.getApellido()+
+                "\nCelular: "+estudiante.getCelular()+
+                "\nEmail: "+estudiante.getEmail()+
+                "\nCodigo: "+estudiante.getCodigoEstudiante()+
+                "\n¿Es estudiante?: "+estudiante.isEstudiante());
     }
 
     private void inicializarVistas() {
@@ -38,18 +38,21 @@ public class HomeActivity extends AppCompatActivity {
     private void recibirDatosPantallaA(){
         //Paso 2: Recibir datos
         /*
-        Para recibir los datos, las pantallas involicaradas en el INTENT
+        Para recibir los datos, las pantallas involucradas en el INTENT
         saben o conocen la referencia de este...
         entonces la idea es obtener ese Intent, de ese intnt obtener
         elmarchivo EXTRAS, y de ese archivo obtener un registro en particular
         al obtener tienen que indicar que tipo de dato es ej: getString, getInt
         y como parámetro le pasan la llave del registro.
          */
-        nombre = this.getIntent().getExtras().getString("nombre_persona","");
+        /*nombre = this.getIntent().getExtras().getString("nombre_persona","");
         apellido = this.getIntent().getExtras().getString("apellido_persona","");
         celular = this.getIntent().getExtras().getString("celular_persona","");
         email = this.getIntent().getExtras().getString("email_persona","");
         codigo = this.getIntent().getExtras().getString("codigo_persona","");
-        esEstudiante = this.getIntent().getExtras().getBoolean("esEstudiante_persona",false);
+        esEstudiante = this.getIntent().getExtras().getBoolean("esEstudiante_persona",false);*/
+
+        //Paso 2: forma alternativa Objeto Estudiante en formato bytes
+        estudiante = (Estudiante) this.getIntent().getExtras().getSerializable("objeto_estudiante");
     }
 }

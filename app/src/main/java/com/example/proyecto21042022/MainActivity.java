@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 obtenerInformacion();
-                pasarOtraPantalla();
             }
         });
 
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         en conceptos del contexto de la clase que representa a esa pantalla
         */
         Intent intencion = new Intent(this, HomeActivity.class);
-        //Paso 1: mandar datos
+        //Paso 1: mandar datos primitivos
         /*
         Quieren pasar datos a otra pantalla
         Usar el Intent
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         y cada registro que crean es un EXTRA
         La llave debe ser una cadena string única
          */
-        nombre = etNombre.getText().toString();
+        /*nombre = etNombre.getText().toString();
         apellido = etApellido.getText().toString();
         celular = etCelular.getText().toString();
         email = etEmail.getText().toString();
@@ -89,7 +88,12 @@ public class MainActivity extends AppCompatActivity {
         intencion.putExtra("celular_persona",celular);
         intencion.putExtra("email_persona",email);
         intencion.putExtra("codigo_persona",codigo);
-        intencion.putExtra("esEstudiante_persona",esEstudiante);
+        intencion.putExtra("esEstudiante_persona",esEstudiante);*/
+        //Paso alternativo: pasar datos por objeto serializado
+        //Objeto Bundle entiendace como si fuera un archivo temporal
+        Bundle archivoTemporal = new Bundle();
+        archivoTemporal.putSerializable("objeto_estudiante",estudiante);
+        intencion.putExtras(archivoTemporal);
         startActivity(intencion);
     }
 
@@ -137,8 +141,7 @@ public class MainActivity extends AppCompatActivity {
         //Primero obtenemos los valores de los tb como tal, para validar si son null o no.
         //Luego, si no es el caso lo asignamos a las variables para llamar a la clase e imprimir
         if(etNombre.getText().toString().isEmpty() || etApellido.getText().toString().isEmpty() ||
-                etCelular.getText().toString().isEmpty() || etEmail.getText().toString().isEmpty() ||
-                etCodigo.getText().toString().isEmpty()){
+                etCelular.getText().toString().isEmpty() || etEmail.getText().toString().isEmpty()){
             Toast.makeText(this,"Debe ingresar todos los datos",Toast.LENGTH_LONG).show();
         }
         else if(etNombre.getText().toString().length() < 3){
@@ -151,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"El número de celular ingresado es demasiado pequeño",Toast.LENGTH_LONG).show();
         }
         else{
-            nombre = etNombre.getText().toString();
+            /*nombre = etNombre.getText().toString();
             apellido = etApellido.getText().toString();
             String email = etApellido.getText().toString();
             int celular = Integer.parseInt(etCelular.getText().toString());
@@ -160,9 +163,18 @@ public class MainActivity extends AppCompatActivity {
             //cuando el elemento ha sdo marcado y eso es un atributo
             //llamdo checked
             //en valores booleanos el get cambia por is por temas de lenguaje
-            boolean esEstudiante = swEstudiante.isChecked();
-            estudiante = new Estudiante(nombre,apellido,celular, email, esEstudiante);
-            tvResultado.setText(estudiante.toString());
+            boolean esEstudiante = swEstudiante.isChecked();*/
+            estudiante = new Estudiante(etNombre.getText().toString(),
+                        etApellido.getText().toString(),
+                    Integer.parseInt(etCelular.getText().toString()),
+                    etEmail.getText().toString(),
+                    swEstudiante.isChecked()
+                    );
+            if (swEstudiante.isChecked()){
+                estudiante.setCodigoEstudiante(Integer.parseInt(etCodigo.getText().toString()));
+            }
+            //tvResultado.setText(estudiante.toString());
+            pasarOtraPantalla();
         }
     }
 }

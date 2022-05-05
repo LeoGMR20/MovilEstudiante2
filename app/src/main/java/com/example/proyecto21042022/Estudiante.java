@@ -1,7 +1,11 @@
 package com.example.proyecto21042022;
 
+import java.io.Serializable;
+
 //Representación de una clase POJO (Plain Old Java Object)
-public class Estudiante {
+public class Estudiante implements Serializable/*Interfaces marcador -> no hay que implementar reglas
+                                                                        del juego*/
+{
 
     //Atributos
 
@@ -48,6 +52,10 @@ public class Estudiante {
         return codigoEstudiante;
     }
 
+    public void setCodigoEstudiante(int codigoEstudiante) {
+        this.codigoEstudiante = codigoEstudiante;
+    }
+
     @Override
     public String toString() {
         return "Estudiante\n" +
@@ -55,6 +63,7 @@ public class Estudiante {
                 "Apellido= " + apellido + '\n' +
                 "Celular= " + celular + '\n' +
                 "Email= " + email + '\n' +
-                "Es estudiante= " + estudiante;
+                "Es estudiante= " + estudiante + '\n' +
+                "Código= " + codigoEstudiante;
     }
 }

@@ -7,4 +7,5 @@
     <string name="btn_registrar">Registrar</string>
     <string name="hint_email">Email:</string>
     <string name="hint_codigo">Codigo Estudiante:</string>
+    <string name="text2daPantalla">Hola 2da Pantalla</string>
 </resources>
